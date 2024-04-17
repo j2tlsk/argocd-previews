@@ -15,12 +15,12 @@ spec:
     helm:
       values: |
         image:
-          tag: "1.71"
+          tag: "2.9.9"
         ingress:
           host: "pr-devops-paradox-1.localhost"
       version: v3
     path: helm
-    repoURL: https://github.com/vfarcic/devops-paradox.git
+    repoURL: https://github.com/vfarcic/devops-toolkit.git
     targetRevision: HEAD
   syncPolicy:
     automated:
