@@ -20,7 +20,7 @@ spec:
           host: "pr-devops-paradox-1.localhost"
       version: v3
     path: helm
-    repoURL: https://github.com/j2tlsk/devops-paradox.git
+    repoURL: https://github.com/vfarcic/devops-paradox.git
     targetRevision: HEAD
   syncPolicy:
     automated:
