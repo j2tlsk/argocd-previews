@@ -1,0 +1,30 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: pr-nginx-test-1
+  namespace: argocd
+spec:
+  destination:
+    namespace: pr-nginx-test-1
+    server: https://kubernetes.default.svc
+  project: previews
+  source:
+    helm:
+      values: |
+        image:
+          tag: "1.0.1"
+        ingress:
+          host: "pr-nginx-test-1.localhost"
+      version: v3
+    path: helm
+    repoURL: https://github.com/j2tlsk/nginx-test.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
