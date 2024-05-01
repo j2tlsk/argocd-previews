@@ -15,7 +15,7 @@ spec:
     helm:
       values: |
         image:
-          tag: "stable"
+          tag: "1.15.0"
         ingress:
           host: "pr-nginx-test-1.localhost"
       version: v3
