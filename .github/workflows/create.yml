@@ -31,7 +31,7 @@ jobs:
         #  ref: ${{ github.head_ref }}
 
       - name: Generate ArgoCD Application manifest file
-        run: ./scripts/create.sh
+        run: ./create.sh
         env:
           APP_ID: "pr-${{ github.event.inputs.repoName }}-${{ github.event.inputs.pullNumber }}"
           IMAGE_TAG: ${{ github.event.inputs.imageTag }}
