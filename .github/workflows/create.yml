@@ -30,12 +30,6 @@ jobs:
         #with:
         #  ref: ${{ github.head_ref }}
 
-      - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
-
-      - name: Install tools
-        run: brew bundle
-
       - name: Generate ArgoCD Application manifest file
         run: ./scripts/create.sh
         env:
