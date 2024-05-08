@@ -51,7 +51,7 @@ jobs:
           git config --global user.name "create[bot]"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git status -v
-          git add .
+          git add helm
           git diff --cached
           git commit -m "pr-${{ github.event.inputs.repoName }}-${{ github.event.inputs.pullNumber }} created or updated"
           git push
