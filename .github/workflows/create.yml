@@ -34,7 +34,7 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@master
 
       - name: Install tools
-        run: brew install kyml
+        run: brew install frigus02/tap/kyml
         
       - name: Generate ArgoCD Application manifest file
         run: ./create.sh
