@@ -13,9 +13,6 @@ on:
       repoName:
         description: ''
         required: true
-      chartPath:
-        description: ''
-        required: true
 
 permissions:
   # Give the default GITHUB_TOKEN write permission to commit and push the
@@ -42,11 +39,10 @@ jobs:
       - name: Generate ArgoCD Application manifest file
         run: ./scripts/create.sh
         env:
-          APP_ID: ${{ github.event.inputs.pullNumber }}
+          APP_ID: "pr-${{ github.event.inputs.repoName }}-${{ github.event.inputs.pullNumber }}"
           IMAGE_TAG: ${{ github.event.inputs.imageTag }}
           REPO: ${{ github.event.inputs.repoName }}
-          CHART_PATH: ${{ github.event.inputs.chartPath }}
-          HOST: "${{ github.event.inputs.pullNumber }}.127.0.0.1.nip.io"
+          HOSTNAME: "pr-${{ github.event.inputs.repoName }}-${{ github.event.inputs.pullNumber }}.localhost"
 
       - name: GIT Commit Build Artifacts
         # Only run on main branch push (e.g. after pull request merge).
@@ -58,5 +54,5 @@ jobs:
           # Only changes in charts dir:
           git add charts/previews
           git diff --cached
-          git commit -m "Preview ${{ github.event.inputs.pullNumber }} created or updated"
+          git commit -m "pr-${{ github.event.inputs.repoName }}-${{ github.event.inputs.pullNumber }} created or updated"
           git push
